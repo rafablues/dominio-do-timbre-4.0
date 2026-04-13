@@ -732,7 +732,6 @@ function AppContent({ user }: { user: User }) {
                     {FREQUENCY_BANDS.map((band, bi) => {
                       const adj = recipe.adjustments.find(a => a.band === bi);
                       const db  = adj ? adj.db : 0;
-                      const pct = 50 + (db / 12) * 50;
                       return (
                         <div key={bi} className="eq-band-col" title={`${band.title}: ${db > 0 ? '+' : ''}${db}dB`}>
                           <div className="eq-bar-wrap">

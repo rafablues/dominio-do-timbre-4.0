@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Play, Pause, SkipBack, SkipForward, Volume2, Headphones } from 'lucide-react';
 import { useAudiobook } from '../context/AudiobookContext';
 import { CHAPTERS, SPEEDS, fmt } from '../context/audiobookData';
