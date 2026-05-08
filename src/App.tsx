@@ -78,50 +78,70 @@ const QUIZ_QUESTIONS = [
 ];
 
 const EQ_RECIPES = [
-  { name: "Voz Principal Limpa", emoji: "🎤",
-    desc: "A receita clássica para uma voz clara, presente e sem chiado.",
+  { name: "Solo Limpo (Pop/Worship)", emoji: "✨",
+    badge: "GUITARRA • LEAD", badgeColor: "#f59e0b",
+    desc: "Compensa a falta de compressão natural empurrando frequências frontais.",
     adjustments: [
-      { band: 0, db: -12, note: "High-Pass para limpar graves desnecessários" },
-      { band: 1, db: -4,  note: "Remove a 'nasalidade'" },
-      { band: 3, db: +3,  note: "Presença e inteligibilidade" },
-      { band: 5, db: -2,  note: "Controla sibilância ('s' e 'ch')" },
-      { band: 6, db: +2,  note: "Adiciona 'ar' e profissionalismo" },
+      { band: 0, hz: 110,  db: -12, label: "High Pass",          note: "Limpa a sujeira grave, mantendo o corpo." },
+      { band: 3, hz: 1000, db: +4,  label: "Boost Largo (+4dB)", note: "Traz a guitarra para a frente da mix." },
+      { band: 6, hz: 8000, db: +2,  label: "Boost Suave (+2dB)", note: "Adiciona 'Ar' e brilho de estúdio." },
     ]},
-  { name: "Guitarra Elétrica Cortante", emoji: "🎸",
-    desc: "Faça a guitarra 'cortar' a mix sem machucar os ouvidos.",
+  { name: "Solo High Gain (Shred)", emoji: "🔥",
+    badge: "GUITARRA • DISTORTION", badgeColor: "#ef4444",
+    desc: "Foco em subtração. Remove o que sobra para ganhar definição na velocidade.",
     adjustments: [
-      { band: 0, db: -12, note: "Corte total dos sub-graves" },
-      { band: 1, db: -5,  note: "Remove lama e caixão de papelão" },
-      { band: 3, db: +2,  note: "Ataque da palheta" },
-      { band: 4, db: +3,  note: "Mordida que corta a mix" },
-      { band: 6, db: +1,  note: "Ar e definição" },
+      { band: 1, hz: 200,  db: -12, label: "High Pass Agressiva", note: "Remove a 'tonca' que embola com o bumbo duplo." },
+      { band: 4, hz: 2500, db: +2,  label: "Boost Sutil (+2dB)",  note: "Adiciona a 'mordida' para cortar a distorção." },
+      { band: 5, hz: 4000, db: -4,  label: "Corte Notch (-4dB)",  note: "Remove a frequência estridente que cansa o ouvido." },
+      { band: 7, hz: 10000,db: -6,  label: "Low Pass",            note: "Remove o 'fizz' digital e chiado." },
     ]},
-  { name: "Kick Drum Poderoso", emoji: "🥁",
-    desc: "O bumbo que você sente no peito e ouve claramente ao mesmo tempo.",
+  { name: "Base Rock (Crunch/Classic)", emoji: "🎸",
+    badge: "GUITARRA • BASE", badgeColor: "#8b5cf6",
+    desc: "Timbre clássico de Rock, focado nos médios para preencher o espaço.",
     adjustments: [
-      { band: 0, db: +4,  note: "Sub-grave corpóreo (sentido no peito)" },
-      { band: 1, db: -4,  note: "Remove o 'bum' flácido" },
-      { band: 2, db: -2,  note: "Reduz oco" },
-      { band: 3, db: +5,  note: "Ataque do beater — o 'tum'" },
-      { band: 7, db: -6,  note: "Low-Pass para limpar chiado" },
+      { band: 0, hz: 100, db: -12, label: "High Pass",       note: "Mantém o peso fundamental." },
+      { band: 1, hz: 300, db: -2,  label: "Corte Leve",      note: "Limpa um pouco da 'lama' da Gibson/Humbucker." },
+      { band: 2, hz: 720, db: +4,  label: "Boost (+4dB)",    note: "Região do Tube Screamer. Dá o 'honk' clássico de rock." },
     ]},
-  { name: "Baixo Elétrico Definido", emoji: "🎵",
-    desc: "Baixo que é ouvido em qualquer sistema de som, até em fone pequeno.",
+  { name: "Base Metal (Modern)", emoji: "🤘",
+    badge: "GUITARRA • BASE", badgeColor: "#8b5cf6",
+    desc: "Timbre moderno 'Scooped' (cavado), mas com controle para não sumir.",
     adjustments: [
-      { band: 0, db: +2,  note: "Fundação sub" },
-      { band: 1, db: -3,  note: "Remove lama" },
-      { band: 2, db: +3,  note: "Corpo do instrumento" },
-      { band: 3, db: +2,  note: "Ataque das cordas" },
-      { band: 5, db: -1,  note: "Suaviza aspereza das cordas" },
+      { band: 0, hz: 80,   db: -12, label: "High Pass",    note: "Corte mais baixo para permitir o 'chug' da 7ª corda." },
+      { band: 2, hz: 800,  db: -4,  label: "Corte Largo",  note: "Remove o som de 'rádio' para deixar o som mais agressivo." },
+      { band: 6, hz: 6000, db: +3,  label: "Boost",        note: "Aumenta a presença da palhetada no high gain." },
     ]},
-  { name: "Mixagem 'Radio Ready'", emoji: "📻",
-    desc: "O 'master EQ' sutil que dá aquele brilho de rádio ao projeto final.",
+  { name: "Ambient Clean (Post-Rock)", emoji: "🌊",
+    badge: "GUITARRA • TEXTURA", badgeColor: "#3b82f6",
+    desc: "Timbre etéreo para muito Reverb/Delay. Foco em não embolar.",
     adjustments: [
-      { band: 0, db: -6,  note: "High-Pass no master" },
-      { band: 1, db: -1,  note: "Levemente remove lama" },
-      { band: 3, db: +1,  note: "Micro-boost de presença" },
-      { band: 6, db: +2,  note: "Shelf de brilho e ar" },
-      { band: 7, db: -3,  note: "Low-Pass nos extremos" },
+      { band: 1, hz: 200,  db: -12, label: "High Pass Alto",  note: "O Reverb vai adicionar grave artificial, então corte a fonte." },
+      { band: 2, hz: 400,  db: +3,  label: "Boost Quente",    note: "Dá calor e corpo para notas longas." },
+      { band: 6, hz: 6000, db: -6,  label: "Low Pass",        note: "Deixa o timbre mais escuro e cinemático." },
+    ]},
+  { name: "Violão de Aço (Strumming)", emoji: "🎵",
+    badge: "ACÚSTICO • BASE", badgeColor: "#22c55e",
+    desc: "Remove o som de 'caixa' e acentua o brilho das cordas novas.",
+    adjustments: [
+      { band: 0, hz: 80,    db: -12, label: "High Pass",            note: "Evita o 'boom' excessivo ao bater na corda solta." },
+      { band: 1, hz: 350,   db: -4,  label: "Corte Profundo",       note: "Remove o som de 'caixa de papelão' típica de captação piezo." },
+      { band: 7, hz: 10000, db: +4,  label: "High Shelf (+4dB)",    note: "Traz o 'ar' e o brilho metálico das cordas de aço." },
+    ]},
+  { name: "Djent / 8-Cordas", emoji: "⚡",
+    badge: "GUITARRA • EXTREME", badgeColor: "#dc2626",
+    desc: "Controle total de graves para afinações muito baixas (Drop E/F#).",
+    adjustments: [
+      { band: 0, hz: 70,   db: -12, label: "High Pass",         note: "Limpa a região do sub-grave para o baixo brilhar." },
+      { band: 2, hz: 500,  db: -3,  label: "Corte",             note: "Remove a 'lama' que tira a definição das cordas graves." },
+      { band: 3, hz: 1400, db: +5,  label: "Boost Agressivo",   note: "Acentua o ataque da palhetada (o som 'djent')." },
+    ]},
+  { name: "Lead Fuzz (Classic/Stoner)", emoji: "🎛️",
+    badge: "GUITARRA • LEAD", badgeColor: "#f59e0b",
+    desc: "Faz o Fuzz cortar a mix sem soar 'abelhoide' ou magro.",
+    adjustments: [
+      { band: 3, hz: 900,  db: +3,  label: "Boost Médio",   note: "Compensa o 'scoop' natural de pedais Big Muff." },
+      { band: 5, hz: 4000, db: -2,  label: "Corte Suave",   note: "Domia a estrindência desagradável do fuzz." },
+      { band: 6, hz: 8000, db: -6,  label: "Low Pass",      note: "Remove o chiado (fizz) que não é musical." },
     ]},
 ];
 
@@ -185,18 +205,108 @@ function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
 
   useEffect(() => {
+    // Timeout de segurança: se Supabase não responder em 4s, trata como não autenticado
+    const fallback = setTimeout(() => setUser(u => u === undefined ? null : u), 4000);
+
     supabase.auth.getSession().then(({ data }) => {
+      clearTimeout(fallback);
       setUser(data.session?.user ?? null);
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
-    return () => subscription.unsubscribe();
+    return () => { subscription.unsubscribe(); clearTimeout(fallback); };
   }, []);
 
-  if (user === undefined) return null;
-  if (user === null) return <AuthPage />;
-  return <AppContent user={user} />;
+  // DEV: auth temporariamente desativado para visualização
+  void AuthPage;
+  if (user === undefined) return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#0A0A0C' }}>
+      <div style={{ width: 40, height: 40, border: '3px solid rgba(236,154,41,0.3)', borderTopColor: '#EC9A29', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+  const _user = user ?? ({ id: 'dev', email: 'dev@preview.com' } as unknown as User);
+  // if (user === null) return <AuthPage />;
+  return <AppContent user={_user} />;
+}
+
+// ─── EQ DISPLAY ───────────────────────────────────────────────────────────────
+
+function EqDisplay({ adjustments }: { adjustments: { hz: number; db: number }[] }) {
+  const pL = 22, pR = 6, pT = 5, pB = 14;
+  const W = 300, H = 88;
+  const plotW = W - pL - pR, plotH = H - pT - pB;
+  const minHz = 20, maxHz = 20000, maxDb = 13;
+
+  const fx = (f: number) => pL + (Math.log10(f / minHz) / Math.log10(maxHz / minHz)) * plotW;
+  const fy = (db: number) => pT + plotH / 2 - (db / maxDb) * (plotH / 2);
+
+  // Bell-curve amplitude response
+  let d = '';
+  for (let i = 0; i <= 240; i++) {
+    const f = minHz * Math.pow(maxHz / minHz, i / 240);
+    let total = 0;
+    for (const a of adjustments) {
+      const logR = Math.log2(f / a.hz);
+      total += a.db * Math.exp(-0.5 * (logR / 0.75) ** 2);
+    }
+    const x = fx(f), y = fy(Math.max(-maxDb, Math.min(maxDb, total)));
+    d += i === 0 ? `M${x.toFixed(1)},${y.toFixed(1)}` : ` L${x.toFixed(1)},${y.toFixed(1)}`;
+  }
+  const z = fy(0);
+  const fillD = `${d} L${(pL + plotW).toFixed(1)},${z.toFixed(1)} L${pL},${z.toFixed(1)} Z`;
+
+  const freqTicks = [20,50,100,200,500,1000,2000,5000,10000,20000];
+  const freqLabels: [number, string][] = [[20,'20'],[50,'50'],[100,'100'],[200,'200'],[500,'500'],[1000,'1k'],[2000,'2k'],[5000,'5k'],[10000,'10k'],[20000,'20k']];
+  const dbLines = [12, 6, 0, -6, -12];
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ width:'100%', height:'88px', display:'block' }}>
+      {/* plot bg */}
+      <rect x={pL} y={pT} width={plotW} height={plotH} fill="rgba(0,0,0,0.4)" rx="2"/>
+
+      {/* dB grid */}
+      {dbLines.map(db => {
+        const y = fy(db);
+        return <g key={db}>
+          <line x1={pL} y1={y} x2={pL+plotW} y2={y}
+            stroke={db===0 ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.07)'}
+            strokeWidth={db===0 ? 1 : 0.5}/>
+          <text x={pL-2} y={y+3.5} textAnchor="end" fill="rgba(255,255,255,0.28)"
+            fontSize="5" fontFamily="monospace">{db>0?`+${db}`:db}</text>
+        </g>;
+      })}
+
+      {/* freq grid */}
+      {freqTicks.map(f => (
+        <line key={f} x1={fx(f)} y1={pT} x2={fx(f)} y2={pT+plotH}
+          stroke="rgba(255,255,255,0.06)" strokeWidth="0.5"/>
+      ))}
+
+      {/* fill */}
+      <path d={fillD} fill="rgba(236,154,41,0.13)"/>
+
+      {/* curve */}
+      <path d={d} fill="none" stroke="#EC9A29" strokeWidth="1.8" strokeLinejoin="round"/>
+
+      {/* control dots */}
+      {adjustments.map((a, i) => {
+        let total = 0;
+        for (const b of adjustments) {
+          const logR = Math.log2(a.hz / b.hz);
+          total += b.db * Math.exp(-0.5 * (logR / 0.75) ** 2);
+        }
+        return <circle key={i} cx={fx(a.hz)} cy={fy(Math.max(-maxDb,Math.min(maxDb,total)))} r="3" fill="#EC9A29"/>;
+      })}
+
+      {/* freq labels */}
+      {freqLabels.map(([f, lbl]) => (
+        <text key={f} x={fx(f)} y={H-2} textAnchor="middle" fill="rgba(255,255,255,0.3)"
+          fontSize="5" fontFamily="monospace">{lbl}</text>
+      ))}
+    </svg>
+  );
 }
 
 // ─── APP CONTENT ──────────────────────────────────────────────────────────────
@@ -248,6 +358,20 @@ function AppContent({ user }: { user: User }) {
       });
   }, [user.id]);
 
+  // ── Recipe audio state ──
+  const [playingStep, setPlayingStep] = useState<string | null>(null);
+
+  const handleRecipePlay = useCallback((key: string, hz: number) => {
+    if (playingStep === key) {
+      stop(); setPlayingStep(null);
+    } else {
+      stop();
+      play(hz, 'sine', 0.4);
+      setPlayingStep(key);
+      setTimeout(() => { stop(); setPlayingStep(null); }, 2000);
+    }
+  }, [playingStep, play, stop]);
+
   // ── Quiz state ──
   const [quizIdx, setQuizIdx]       = useState(0);
   const [quizScore, setQuizScore]   = useState(0);
@@ -296,14 +420,13 @@ function AppContent({ user }: { user: User }) {
 
   const nextRound = () => {
     if (trainRound >= 10) {
-      const finalScore = score;
       supabase.from('scores').insert({
         user_id: user.id,
         tipo: 'ear_training',
-        score: finalScore,
+        score,
         total: 10,
       }).then(() => {
-        if (finalScore > bestScore) setBestScore(finalScore);
+        if (score > bestScore) setBestScore(score);
       });
       setGameOver(true);
     } else {
@@ -329,7 +452,7 @@ function AppContent({ user }: { user: User }) {
       supabase.from('scores').insert({
         user_id: user.id,
         tipo: 'quiz',
-        score: quizScore + (quizAnswered === quizOrder[quizIdx].answer ? 1 : 0),
+        score: quizScore,
         total: quizOrder.length,
       });
       setQuizDone(true);
@@ -394,8 +517,9 @@ function AppContent({ user }: { user: User }) {
     );
   }
 
-  const hasAccess = subscription?.status === 'active' && new Date(subscription.expires_at) > new Date();
-  if (!hasAccess) return <PaymentWall user={user} />;
+  // DEV: paywall temporariamente desativado para visualização
+  void PaymentWall;
+  const hasAccess = true; void hasAccess;
 
   // ── Render ──
 
@@ -453,8 +577,8 @@ function AppContent({ user }: { user: User }) {
           { id: 'lab',      icon: <Activity size={20} />,   label: 'Lab' },
           { id: 'train',    icon: <Ear size={20} />,        label: 'Treino' },
           { id: 'quiz',     icon: <BookOpen size={20} />,   label: 'Quiz' },
+          { id: 'recipes',  icon: <ChefHat size={20} />,    label: 'Receitas' },
           { id: 'conteudo', icon: <Library size={20} />,    label: 'Conteúdo' },
-          { id: 'ranking',  icon: <Medal size={20} />,      label: 'Ranking' },
         ].map(({ id, icon, label }) => (
           <button key={id} className={`bottom-nav-item ${activeTab === id ? 'active' : ''}`}
               onClick={() => setActiveTab(id)}>
@@ -570,7 +694,7 @@ function AppContent({ user }: { user: User }) {
                   <Trophy size={64} color="var(--accent-orange)" style={{ margin: '0 auto 1rem' }} />
                   <h2 className="text-orange" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Fase Completa!</h2>
                   <div className="score-big">{score}<span style={{ fontSize: '2rem', color: 'var(--text-secondary)' }}>/10</span></div>
-                  {score > bestScore - 1 && score === bestScore && score > 0 && (
+                  {score > bestScore && score > 0 && (
                     <div className="new-record">🏆 Novo Recorde!</div>
                   )}
                   <p className="text-muted" style={{ marginBottom: '2rem' }}>
@@ -717,51 +841,54 @@ function AppContent({ user }: { user: User }) {
           {/* ── RECEITAS DE EQ ── */}
           {activeTab === 'recipes' && (
             <div className="recipes-grid">
+              <p className="text-muted" style={{ gridColumn: '1/-1', fontSize: '0.85rem', marginBottom: '0.25rem' }}>
+                Presets explicados para Guitarra — clique em 🔊 para ouvir a frequência.
+              </p>
               {EQ_RECIPES.map((recipe, ri) => (
                 <div key={ri} className="glass-panel recipe-card">
                   <div className="recipe-header">
                     <span className="recipe-emoji">{recipe.emoji}</span>
-                    <div>
-                      <h3>{recipe.name}</h3>
-                      <p className="text-muted" style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>{recipe.desc}</p>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+                        <h3 style={{ margin: 0 }}>{recipe.name}</h3>
+                        <span className="recipe-badge" style={{ background: (recipe as any).badgeColor + '22', color: (recipe as any).badgeColor, borderColor: (recipe as any).badgeColor + '55' }}>
+                          {(recipe as any).badge}
+                        </span>
+                      </div>
+                      <p className="text-muted" style={{ fontSize: '0.83rem', marginTop: '0.3rem', marginBottom: 0 }}>{recipe.desc}</p>
                     </div>
                   </div>
 
-                  {/* EQ Visual */}
-                  <div className="eq-visual">
-                    {FREQUENCY_BANDS.map((band, bi) => {
-                      const adj = recipe.adjustments.find(a => a.band === bi);
-                      const db  = adj ? adj.db : 0;
+                  {/* EQ Curve SVG */}
+                  <div className="eq-curve-wrap">
+                    <EqDisplay adjustments={recipe.adjustments.map(a => ({ hz: (a as any).hz, db: a.db }))} />
+                  </div>
+
+                  {/* Passo a Passo */}
+                  <p className="recipe-section-label">PASSO A PASSO</p>
+                  <div className="recipe-adjustments">
+                    {recipe.adjustments.map((adj, ai) => {
+                      const stepKey = `${ri}-${ai}`;
+                      const isPlaying = playingStep === stepKey;
+                      const hzLabel = (adj as any).hz >= 1000
+                        ? `${((adj as any).hz / 1000).toFixed(1).replace('.0', '')} kHz`
+                        : `${(adj as any).hz} Hz`;
                       return (
-                        <div key={bi} className="eq-band-col" title={`${band.title}: ${db > 0 ? '+' : ''}${db}dB`}>
-                          <div className="eq-bar-wrap">
-                            <div className="eq-bar-fill"
-                                 style={{
-                                   height: `${Math.abs(db) / 12 * 100}%`,
-                                   bottom: db >= 0 ? '50%' : 'auto',
-                                   top: db < 0 ? '50%' : 'auto',
-                                   background: db >= 0 ? band.color : band.color + '88',
-                                 }} />
-                            <div className="eq-bar-center" />
-                          </div>
-                          <span className="eq-bar-label">{bi < 4 ? Math.round((band.start + band.end)/2) < 1000 ? Math.round((band.start+band.end)/2) : ((band.start+band.end)/2000).toFixed(1)+'k' : ((band.start+band.end)/2000).toFixed(1)+'k'}</span>
-                          {adj && <span className="eq-db-tag" style={{ color: db >= 0 ? band.color : '#ef4444' }}>{db > 0 ? '+' : ''}{db}</span>}
+                        <div key={ai} className="recipe-adj-row">
+                          <span className="adj-dot" style={{ background: FREQUENCY_BANDS[adj.band].color }} />
+                          <span className="adj-freq">{hzLabel}</span>
+                          <span className="adj-label text-muted">• {(adj as any).label}</span>
+                          <span className="adj-note text-muted">{adj.note}</span>
+                          <button
+                            className={`btn-ouvir ${isPlaying ? 'active' : ''}`}
+                            onClick={() => handleRecipePlay(stepKey, (adj as any).hz)}
+                            title={`Ouvir ${hzLabel}`}
+                          >
+                            {isPlaying ? '⏹' : '🔊'} ouvir
+                          </button>
                         </div>
                       );
                     })}
-                  </div>
-
-                  {/* Adjustments List */}
-                  <div className="recipe-adjustments">
-                    {recipe.adjustments.map((adj, ai) => (
-                      <div key={ai} className="recipe-adj-row">
-                        <span className="adj-dot" style={{ background: FREQUENCY_BANDS[adj.band].color }} />
-                        <span className="adj-db" style={{ color: adj.db >= 0 ? 'var(--success)' : 'var(--danger)' }}>
-                          {adj.db > 0 ? '+' : ''}{adj.db}dB
-                        </span>
-                        <span className="adj-note text-muted">{adj.note}</span>
-                      </div>
-                    ))}
                   </div>
                 </div>
               ))}

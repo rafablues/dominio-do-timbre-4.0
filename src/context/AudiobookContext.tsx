@@ -55,14 +55,24 @@ export function AudiobookProvider({ children }: { children: React.ReactNode }) {
     audio.load();
     audio.playbackRate = speed;
     setCurrent(0); setDuration(0);
-    if (playing) audio.play();
+    if (playing) audio.play().catch(() => setPlaying(false));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeChap]);
 
   const togglePlay = useCallback(async () => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (playing) { audio.pause(); setPlaying(false); }
-    else         { await audio.play(); setPlaying(true); }
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      try {
+        await audio.play();
+        setPlaying(true);
+      } catch {
+        setPlaying(false);
+      }
+    }
   }, [playing]);
 
   const seek = useCallback((val: number) => {
